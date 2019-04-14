@@ -44,7 +44,7 @@ class ArticleList extends Component {
 		const { articleList } = this.props;
 		return (
 			<div className='article-list-container'>
-				{articleList.length <= 0 ? <div>NO DB ENTRIES YET</div> : this.renderArticles()}
+				{articleList.length <= 0 ? <div>NO Articles YET</div> : this.renderArticles()}
 			</div>
 		);
 	}
