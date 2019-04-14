@@ -1,0 +1,37 @@
+.article-list-container {
+	width: 90%;
+	margin: auto;
+	margin-top: 75px;
+
+	.list-wrapper {
+		width: 100%;
+		display: block;
+
+		.article {
+			width: 100%;
+			align-items: center;
+			padding: 1rem;
+			margin: 1rem auto;
+			display: inline-flex;
+			justify-content: space-between;
+			border-radius: 5px;
+			box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+			.title {
+				font-size: 18px;
+				font-weight: 500;
+				cursor: pointer;
+			}
+
+			.action-btn {
+				background-color: #4caf50;
+				font-size: 18px;
+				font-weight: 700;
+				color: #fff;
+				padding: 8px 15px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+		}
+	}
+}
