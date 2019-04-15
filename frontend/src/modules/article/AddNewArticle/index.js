@@ -4,6 +4,19 @@ import { bindActionCreators } from 'redux';
 import { addDataToDB, getDataFromDb } from '../../../redux/Articles/actions';
 import './index.scss';
 
+function tempAlert(msg, duration, textColor) {
+	var el = document.createElement('div');
+	el.setAttribute(
+		'style',
+		`position:absolute;top:10%;left:40%;background-color:white;z-index:1;padding:15px;color:${textColor};width:20%;text-align:center;border-radius:8px;font-weight:600;`
+	);
+	el.innerHTML = msg;
+	setTimeout(function() {
+		el.parentNode.removeChild(el);
+	}, duration);
+	document.body.appendChild(el);
+}
+
 class AddNewArticle extends Component {
 	state = {
 		title: '',
@@ -23,13 +36,14 @@ class AddNewArticle extends Component {
 			this.props.addDataToDB(articleData).then(res => {
 				if (res.data.success) {
 					this.props.getDataFromDb();
-					alert('successfully added!');
+					this.props.history.push('/');
+					tempAlert('Article successfully added!', 2000, 'green');
 				} else {
-					alert('Invalid Inputs');
+					tempAlert('Invalid Inputs', 2000, 'red');
 				}
 			});
 		} else {
-			alert('Invalid Inputs');
+			tempAlert('Invalid Inputs', 2000, 'red');
 		}
 	};
 
