@@ -5,9 +5,6 @@ import { deleteFromDB, getDataFromDb } from '../../redux/Articles/actions';
 import './index.scss';
 
 class ArticleList extends Component {
-	// initialize our state
-	state = {};
-
 	deleteArticle = articleid => {
 		this.props.deleteFromDB(articleid).then(res => {
 			if (res.data.success) {
@@ -17,27 +14,27 @@ class ArticleList extends Component {
 	};
 
 	renderArticles = () => {
-		return (
-			<div className='list-wrapper'>
-				{this.props.articleList.map(article => {
-					return (
-						<div key={'article' + article.id} className='article'>
-							<div
-								className='title'
-								onClick={() => {
-									this.props.history.push(`/article/${article.id}`);
-								}}
-							>
-								{article.title}
-							</div>
-							<div className='action-btn' onClick={() => this.deleteArticle(article.id)}>
-								delete
-							</div>
-						</div>
-					);
-				})}
-			</div>
-		);
+		let articleListHtml = [];
+		let { articleList } = this.props;
+		for (let i = 0; i < articleList.length; i++) {
+			let article = articleList[i];
+			articleListHtml.push(
+				<div key={'article' + article.id} className='article'>
+					<div
+						className='title'
+						onClick={() => {
+							this.props.history.push(`/article/${article.id}`);
+						}}
+					>
+						{article.title}
+					</div>
+					<div className='action-btn' onClick={() => this.deleteArticle(article.id)}>
+						delete
+					</div>
+				</div>
+			);
+		}
+		return <div className='list-wrapper'>{articleListHtml}</div>;
 	};
 
 	render() {

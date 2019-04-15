@@ -69,19 +69,22 @@ export const deleteFromDB = idTodelete => (dispatch, getState) => {
 
 //  update method that uses our backend api
 //  to overwrite existing data base information
-export const updateDB = (idToUpdate, updateToApply) => (dispatch, getState) => {
-	let objIdToUpdate = null;
+export const updateDB = (idToUpdate, paragraphKey, comment) => (dispatch, getState) => {
+	let objIdToUpdate = null,
+		articleData = {};
 	const {
 		data: { articles }
 	} = getState();
-	articles.forEach(dat => {
-		if (dat.id === idToUpdate) {
-			objIdToUpdate = dat._id;
+	articles.forEach(data => {
+		if (data.id == idToUpdate) {
+			objIdToUpdate = data._id;
+			articleData = data;
 		}
 	});
+	articleData.desc[paragraphKey].comments.push(comment);
 
-	axios.post('http://localhost:3001/api/updateData', {
+	return axios.post('http://localhost:3001/api/updateData', {
 		id: objIdToUpdate,
-		update: updateToApply
+		update: articleData
 	});
 };
