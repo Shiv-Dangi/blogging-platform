@@ -4,6 +4,19 @@ import { bindActionCreators } from 'redux';
 import './index.scss';
 
 class ArticleDetails extends Component {
+	renderArticleParas = () => {
+		let { articleData } = this.props;
+		let paragraphsHtml = [];
+		for (let key in articleData.desc) {
+			paragraphsHtml.push(
+				<p className='description' key={key}>
+					{articleData.desc[key].text}
+				</p>
+			);
+		}
+		return paragraphsHtml;
+	};
+
 	render() {
 		const { articleData } = this.props;
 		return (
@@ -11,7 +24,7 @@ class ArticleDetails extends Component {
 				{Object.keys(articleData).length !== 0 && articleData.constructor === Object ? (
 					<>
 						<div className='title'>{articleData.title}</div>
-						<div className='description'>{articleData.desc.p1}</div>
+						{this.renderArticleParas()}
 					</>
 				) : (
 					<div>data not available</div>

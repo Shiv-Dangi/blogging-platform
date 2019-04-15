@@ -17,8 +17,11 @@ body {
 		color: #fff;
 		display: flex;
 		align-items: center;
-		justify-content: space-around;
 		cursor: pointer;
 		text-transform: uppercase;
+
+		.nav-menu-item {
+			padding: 0 1rem;
+		}
 	}
 }

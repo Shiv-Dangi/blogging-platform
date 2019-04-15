@@ -12,8 +12,15 @@ class AddNewArticle extends Component {
 
 	addNewArticle = () => {
 		let { title, desc } = this.state;
-		if (title && Object.keys(desc).length !== 0 && desc.constructor === Object) {
-			this.props.addDataToDB(this.state).then(res => {
+		if (title && desc) {
+			let articleData = {};
+			articleData.title = title;
+			articleData.desc = {};
+			let paragraphsInDesc = desc.split('\n\n');
+			for (let i = 0; i < paragraphsInDesc.length; i++) {
+				articleData.desc[`p${i}`] = { text: paragraphsInDesc[i], comments: [] };
+			}
+			this.props.addDataToDB(articleData).then(res => {
 				if (res.data.success) {
 					this.props.getDataFromDb();
 					alert('successfully added!');
@@ -36,7 +43,7 @@ class AddNewArticle extends Component {
 	updateDesc = event => {
 		this.setState({
 			...this.state,
-			desc: { p1: event.target.value }
+			desc: event.target.value
 		});
 	};
 
@@ -53,7 +60,7 @@ class AddNewArticle extends Component {
 				</div>
 				<div className='footer-btns'>
 					<button className='button' onClick={this.addNewArticle}>
-						submit
+						Submit
 					</button>
 					<button
 						className='button'

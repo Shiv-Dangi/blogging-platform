@@ -36,24 +36,18 @@ class AppRouter extends Component {
 						onClick={() => {
 							this.props.history.push('/');
 						}}
+						className='nav-menu-item'
 					>
 						Home
 					</span>
 					<span
 						onClick={() => {
-							this.props.history.push('/');
-						}}
-					>
-						Article List
-					</span>
-					<span
-						onClick={() => {
 							this.props.history.push('/add-new-article');
 						}}
+						className='nav-menu-item'
 					>
 						Add new article
 					</span>
-					<span>about us</span>
 				</div>
 				<Switch onChange={this.onRouteChange}>
 					<Route exact path='/article/:id' component={ArticleDetails} />
