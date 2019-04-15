@@ -10,7 +10,7 @@ class ArticleDetails extends Component {
 	commentInLocalState = event => {
 		this.setState({
 			...this.state,
-			[event._dispatchInstances.key]: event.target.value
+			[event._dispatchInstances.key]: event.target.value.trim()
 		});
 	};
 
