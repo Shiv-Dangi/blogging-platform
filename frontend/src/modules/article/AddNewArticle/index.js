@@ -52,11 +52,11 @@ class AddNewArticle extends Component {
 			<div className='add-article-container'>
 				<div>
 					<label className='label'>Title</label>
-					<input type='text' placeholder='input title..' onChange={this.updatetitle} />
+					<input type='text' placeholder='add title..' onChange={this.updatetitle} />
 				</div>
 				<div>
 					<label className='label'>Description</label>
-					<textarea type='textarea' placeholder='input text..' onChange={this.updateDesc} />
+					<textarea type='textarea' placeholder='add text here..' onChange={this.updateDesc} />
 				</div>
 				<div className='footer-btns'>
 					<button className='button' onClick={this.addNewArticle}>
