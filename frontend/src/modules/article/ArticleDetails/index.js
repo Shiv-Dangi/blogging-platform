@@ -10,13 +10,13 @@ class ArticleDetails extends Component {
 	commentInLocalState = event => {
 		this.setState({
 			...this.state,
-			[event._dispatchInstances.key]: event.target.value.trim()
+			[event._dispatchInstances.key]: event.target.value
 		});
 	};
 
 	saveComment = key => {
 		if (this.state[key]) {
-			this.props.updateDB(this.props.articleData.id, key, this.state[key]).then(res => {
+			this.props.updateDB(this.props.articleData.id, key, this.state[key].trim()).then(res => {
 				if (res.data.success) {
 					this.props.getDataFromDb();
 					console.log('comment added successfully');
@@ -82,6 +82,14 @@ class ArticleDetails extends Component {
 					<>
 						<div className='title'>{articleData.title}</div>
 						{this.renderArticleParas()}
+						<button
+							className='back-button'
+							onClick={() => {
+								this.props.history.push('/');
+							}}
+						>
+							Back to Article List
+						</button>
 					</>
 				) : (
 					<div>data not available</div>
