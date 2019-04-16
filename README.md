@@ -5,6 +5,5 @@ User is able to add blog posts. Blog posts have, a title and plain text where pa
 * install node and npm (https://www.npmjs.com/get-npm,    https://nodejs.org/en/)
 * git clone https://github.com/Shiv-Dangi/blogging-platform.git
 * cd blogging-platform && npm install
-* cd frontend && npm install
-* cd ../backend && npm install
-* cd .. && npm start
+* npm run add-dependency
+* npm start
